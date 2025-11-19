@@ -4,12 +4,10 @@
 <div class = "row">
     <ul>
         <?php foreach ($products as $product): ?>
-           <li class = col>
-
-            <a href="/index.php?action=detalle_producte&product_id=<?php echo $product['id']?>">
-                <?php echo $product['title'] ?>-<?php echo $product['author'] ?>
-              </a>
+           <li class="col"> <a href="/index.php?action=detalle_producte&product_id=<?php echo $product['id']?>">
+                <?php echo htmlspecialchars($product['nom']) ?> - <?php echo htmlspecialchars($product['preu']) ?> €</a>
               </li>
             <?php endforeach; ?>
         </ul>   
         </div>
+</div>

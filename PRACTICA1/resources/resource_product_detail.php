@@ -4,9 +4,10 @@
     <link rel="stylesheet" href="<?php echo BASE_URL. '/view/resources/css/example.css' ?>"/>
 </head>
 <body>
+    <?php require __DIR__ . '/../view/header.php'; ?>
     <div class="container">
-        <?php reqiore __DIR__.'/controller/category_list.php'; ?>
-        <?php reqiore __DIR__.'/controller/product_list.php'; ?>
+        <?php require __DIR__.'/controller/category_list.php'; ?>
+        <?php require __DIR__.'/controller/product_list.php'; ?>
     </div>
 </body>
 </html>

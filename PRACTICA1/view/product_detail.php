@@ -2,6 +2,7 @@
 
 <h1><?php echo $title; ?></h1>
 <div class = "row">
-    <p><?php echo $product['description'] ?></p>
-    </div>
+    <p><?php echo $product['descripcio'] ?></p>
+    <p><?php echo $product['imatge'] ?></p>
+</div>
 </div>
