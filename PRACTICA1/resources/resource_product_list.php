@@ -5,10 +5,12 @@
     </head>
 <body>
 
-<div class="container">
-    <?php require __DIR__ . '/../view/header.php'; ?>
-    <?php require __DIR__ . '/../controller/product_list.php'; ?>
-</div>
+<div class = "container">
+    <h1>HELLO WORlD</h1>
+    <?php require __DIR__ . '/controller/category_list.php'; ?>
+    <?php require __DIR__ . '/controller/product_list.php'; ?>
+    </div>
+</body>
 </html>
     /*
     <!-- <table>

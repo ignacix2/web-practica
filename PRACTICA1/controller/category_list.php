@@ -1,14 +1,9 @@
 <?php
-// PRACTICA1/controller/category_list.php
 
-// 1. Cargamos los modelos
-require_once __DIR__ . "/../model/connectaDb.php";
-require_once __DIR__ . "/../model/categories.php";
+require_once __DIR__."/../model/ConnectaDb.php";
 
-// 2. Pedimos los datos a la base de datos
+require_once __DIR__."/../model/Categories.php";
+
 $categories = getCategories();
 
-// 3. Cargamos la VISTA (El archivo que está en la carpeta 'view')
-// AQUÍ ESTABA EL ERROR:
-require __DIR__ . "/../view/category_list.php";
-?>
+require __DIR__."//../view/resources/resource_category_list.php";

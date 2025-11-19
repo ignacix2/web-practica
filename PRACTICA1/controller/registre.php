@@ -1,1 +1,0 @@
-$password_cifrada = password_hash($_POST['password'], PASSWORD_DEFAULT); 
