@@ -1,7 +1,7 @@
 <html lang= "ca">
 <head>
     <title>Llista de productes - TDIW</title>
-    <link rel="stylesheet" href=<?php echo BASE_URL . '/view/resources/css/example.css'?>/>
+    <link rel="stylesheet" href="<?php echo BASE_URL . 'css/example.css'; ?>">
     </head>
 <body>
 
@@ -11,16 +11,7 @@
 </div>
 </html>
     /*
-    <!-- <table>
-        <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Preu</th>
-            <th>Categoria</th>
-            <th>Detalls</th>
-        </tr>
-        </thead>
-        <tbody>
+
         <?php foreach ($products as $product): ?>
             <tr>
                 <td><?php echo htmlspecialchars($product['name']); ?></td>
@@ -30,5 +21,5 @@
             </tr>
         <?php endforeach; ?>
         </tbody>
-        </table> -->
+        </table> 
     */

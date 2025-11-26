@@ -1,7 +1,7 @@
 <html lang="ca">
 <head>
     <title>Producte-TDIW</title>
-    <link rel="stylesheet" href="<?php echo BASE_URL. '/view/resources/css/example.css' ?>"/>
+    <link rel="stylesheet" href="<?php echo BASE_URL . 'css/example.css'; ?>">
 </head>
 <body>
     <?php require __DIR__ . '/../view/header.php'; ?>

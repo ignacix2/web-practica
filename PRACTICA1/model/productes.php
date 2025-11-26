@@ -10,29 +10,37 @@ function getProductsByCategory(int $categoryId): array
 {
     $conn = getConn();
     
-    // Consulta parametrizada ($1) para seguridad
-    // Asegúrate de que la tabla es 'producte' (singular) y la columna 'categoria_id'
     $sql = "SELECT * FROM producte WHERE categoria_id = $1";
     
     $result = pg_query_params($conn, $sql, [$categoryId]);
     
+    // PROTECCIÓN: Si la consulta falla, devolvemos array vacío en vez de error
+    if (!$result) {
+        return [];
+    }
+    
     $productos = pg_fetch_all($result);
     
-    return $productos ?: []; // Devuelve array vacío si no hay productos
+    return $productos ?: []; 
 }
 
 /**
  * Obtiene un producto por su ID (para el detalle)
  */
-function getProductById(int $productId)
+function getProductById(int $id)
 {
     $conn = getConn();
     
     $sql = "SELECT * FROM producte WHERE id = $1";
     
-    $result = pg_query_params($conn, $sql, [$productId]);
+    $result = pg_query_params($conn, $sql, [$id]);
     
-    // pg_fetch_assoc devuelve una sola fila (o false)
+    // PROTECCIÓN CRÍTICA: Si la consulta falla, devolvemos false suavemente
+    if (!$result) {
+        return false;
+    }
+
+    // PROTECCIÓN 2: Solo intentamos leer si hay resultados
     return pg_fetch_assoc($result);
 }
-?>
+// NO cerramos la etiqueta php ?>

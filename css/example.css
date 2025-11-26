@@ -1,0 +1,431 @@
+/* ============================================================
+   1. RESET & BASE STYLES
+============================================================ */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fff;
+    color: #111;
+    overflow-x: hidden; /* Evita scroll horizontal accidental */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* ============================================================
+   2. HEADER COMPACTO (Estilo SINGH V2)
+============================================================ */
+.singh-header-compact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: white;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 70px;
+}
+
+/* Enlaces Izquierda y Derecha */
+.header-left, .header-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.header-left { justify-content: flex-start; }
+.header-right { justify-content: flex-end; gap: 20px; }
+
+.header-left a, .header-right a {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #111;
+    font-weight: 500;
+    margin-right: 20px;
+}
+
+.header-left a:hover, .header-right a:hover {
+    color: #666;
+    text-decoration: line-through;
+}
+
+/* Logo Central */
+.header-center {
+    flex: 1;
+    text-align: center;
+}
+
+.brand-logo-compact {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    letter-spacing: 6px;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+}
+
+/* Menú d'usuari desplegable */
+.user-menu {
+    position: relative;
+    cursor: pointer;
+}
+
+.user-trigger {
+    background: none;
+    border: none;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #111;
+    font-weight: 600;
+    padding: 8px 4px;
+    outline: none;
+}
+
+.user-trigger:hover {
+    color: #666;
+    text-decoration: line-through;
+}
+
+.user-dropdown {
+    position: absolute;
+    right: 0;
+    top: 120%;
+    min-width: 180px;
+    background: #fff;
+    border: 1px solid #eee;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    padding: 8px 0;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 1500;
+}
+
+.user-menu.is-open .user-dropdown {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.user-dropdown a {
+    display: block;
+    padding: 10px 16px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.user-dropdown a:hover {
+    background: #f6f6f6;
+}
+
+/* ============================================================
+   3. HERO SECTION (Portada)
+============================================================ */
+.hero-container {
+    position: relative;
+    width: 100%;
+    height: 65vh; /* Altura ajustada para ver productos antes */
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center ;
+    filter: brightness(0.9);
+}
+
+.hero-overlay {
+    position: absolute;
+    bottom: 15%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    z-index: 10;
+}
+
+.hero-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    margin: 0 0 30px 0;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.4);
+}
+
+.hero-btn {
+    background-color: white;
+    color: black;
+    padding: 15px 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border: none;
+    transition: transform 0.3s;
+}
+
+.hero-btn:hover {
+    background-color: #000;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* ============================================================
+   4. NAVEGACIÓN CATEGORÍAS
+============================================================ */
+.category-link {
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 1rem;       /* Antes era 0.8rem, lo subimos para que se vea más */
+    text-transform: uppercase;
+    letter-spacing: 1px;   /* Reducimos un poco el espaciado para que se vea más compacta */
+    color: #000000;        /* Negro puro, nada de grises */
+    font-weight: 700;      /* 700 es Negrita (Bold). Antes era normal */
+    position: relative;
+    padding-bottom: 5px;
+    margin: 0 15px;        /* Un poco de aire a los lados */
+}
+
+.category-nav {
+    display: flex;              /* Activa el modo "flexible" */
+    justify-content: center;    /* <--- ESTO ES LA CLAVE: Centra los hijos horizontalmente */
+    flex-wrap: wrap;            /* Si no caben, bajan a la siguiente línea */
+    gap: 50px;                  /* Espacio entre cada palabra (Pantalons <-> Samarretes) */
+    padding: 30px 0;
+    width: 100%;                /* Asegura que ocupa todo el ancho */
+    margin: 0 auto;             /* Centra el bloque en sí mismo */
+}
+
+/* El efecto hover lo mantenemos igual */
+.category-link:hover {
+    color: #000; /* Se mantiene negro */
+}
+
+.category-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px; /* Hacemos la línea de subrayado un poco más gruesa también */
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    transition: width 0.3s;
+}
+.text-placeholder {
+    text-align: center;
+    font-family: 'Cinzel', serif;  /* Usamos la fuente de lujo del logo */
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    color: #999;
+    margin-top: 80px;              /* Lo bajamos un poco más */
+    text-transform: uppercase;
+}
+.category-link:hover::after { width: 100%; }
+
+/* ============================================================
+   5. PRODUCTOS (Grid & Cards)
+============================================================ */
+#contenedor-productos {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.producto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.producto-card {
+    text-align: center;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.producto-card img {
+    width: 100%;
+    height: 450px; /* Formato vertical tipo modelo */
+    object-fit: cover;
+    filter: grayscale(10%);
+    transition: all 0.5s ease;
+    margin-bottom: 20px;
+}
+
+.producto-card:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.02);
+}
+
+.producto-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    color: #000;
+}
+
+.producto-price {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* ============================================================
+   6. VISTA DETALLE PRODUCTO
+============================================================ */
+.detalle-producto {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   7. MODAL "ABOUT US"
+============================================================ */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85); /* Fondo oscuro elegante */
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px); /* Efecto borroso de fondo */
+}
+
+.modal-content {
+    background: #fff;
+    padding: 60px 40px;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px; right: 30px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s;
+}
+.close-btn:hover { color: #000; }
+
+.modal-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    letter-spacing: 5px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.modal-body p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+/* ============================================================
+   8. FORMULARIOS (Login / Registro)
+============================================================ */
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border 0.3s;
+}
+
+input:focus { border-color: #000; }
+
+button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #000;
+    color: white;
+    border: none;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #333;
+}
+
+/* ============================================================
+   9. RESPONSIVE (Móviles)
+============================================================ */
+@media (max-width: 768px) {
+    .singh-header-compact {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+        gap: 15px;
+    }
+    
+    .header-left, .header-right, .header-center {
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-title { font-size: 2rem; }
+    .hero-container { height: 50vh; }
+    
+    .producto-grid {
+        grid-template-columns: 1fr; /* Una columna en móvil */
+    }
+}
